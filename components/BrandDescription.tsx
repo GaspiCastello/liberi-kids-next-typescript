@@ -1,19 +1,20 @@
-import React from "react";
+import { FC } from "react";
 import "bulma/css/bulma.min.css";
+import styles from "../styles/BrandDescription.module.css";
 
-export default function BrandDescription(props) {
+const BrandDescription: FC = () => {
   return (
-    <div>
-      <div class="tile is-ancestor">
-        <div class="tile is-3 "></div>
-        <div class="tile is-6 is-vertical is-parent">
-          <div class="tile is-child">
-            <p class="title brand-description-title box">
+    <section className={styles.branddescription}>
+      <div className="tile is-ancestor">
+        <div className="tile is-3 "></div>
+        <div className="tile is-6 is-vertical is-parent mt-6">
+          <div className="tile is-child">
+            <p className="title brand-description-title box">
               INDUMENTARIA PARA INFANCIAS LIBRES
             </p>
           </div>
-          <div class="tile is-child">
-            <p class=" brand-description box">
+          <div className="tile is-child">
+            <p className=" brand-description box">
               Nuestras prendas LIBERI estan pensadas desde la libertad, el amor
               y lo ludico. Creemos en las infancias múltiples, diversas,
               singulares, creativas, y sobre todo, coloridas. Lo propio de las
@@ -23,11 +24,10 @@ export default function BrandDescription(props) {
             </p>
           </div>
         </div>
-        <div class="tile is-3 "></div>
       </div>
       ;
-    </div>
+    </section>
   );
-}
+};
 
-
+export default BrandDescription;

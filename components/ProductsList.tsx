@@ -45,64 +45,24 @@ const ARRAY_PRODUCTS = [
     price: 15,
     url: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGtpZHMlMjBjbG90aGVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
-  {
-    id: 6,
-    name: "Remera Modelo Fauna",
-    description: "",
-    price: 15,
-    url: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGtpZHMlMjBjbG90aGVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    id: 6,
-    name: "Remera Modelo Fauna",
-    description: "",
-    price: 15,
-    url: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGtpZHMlMjBjbG90aGVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    id: 6,
-    name: "Remera Modelo Fauna",
-    description: "",
-    price: 15,
-    url: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGtpZHMlMjBjbG90aGVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    id: 6,
-    name: "Remera Modelo Fauna",
-    description: "",
-    price: 15,
-    url: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGtpZHMlMjBjbG90aGVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    id: 6,
-    name: "Remera Modelo Fauna",
-    description: "",
-    price: 15,
-    url: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGtpZHMlMjBjbG90aGVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    id: 6,
-    name: "Remera Modelo Fauna",
-    description: "",
-    price: 15,
-    url: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGtpZHMlMjBjbG90aGVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
 ];
 
 function ProductsList(props) {
   return (
-    <div className="container is-flex is-justify-content-space-around is-flex-wrap-wrap">
-      {ARRAY_PRODUCTS.map((user) => (
-        <Product
-          key={user.id}
-          id={user.id}
-          name={user.name}
-          description={user.description}
-          price={user.price}
-          url={user.url}
-        />
-      ))}
-    </div>
+    <section>
+      <div className="container is-flex is-justify-content-space-around is-flex-wrap-wrap">
+        {ARRAY_PRODUCTS.map((user) => (
+          <Product
+            key={user.id}
+            id={user.id}
+            name={user.name}
+            description={user.description}
+            price={user.price}
+            url={user.url}
+          />
+        ))}
+      </div>
+    </section>
   );
 }
 
