@@ -1,0 +1,10 @@
+.navbar {
+  height: 6rem;
+}
+
+.anchorlogo {
+  width: 6rem;
+}
+.anchorlogo img{
+    padding: .5rem;
+}
