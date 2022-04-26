@@ -1,59 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import "bulma/css/bulma.min.css";
 import BrandDescription from "../components/BrandDescription";
 import ProductsList from "../components/ProductsList";
+import { MongoClient } from "mongodb";
+import { Product } from "./models/product";
 
-const Home: React.FC = () => {
+const Home: React.FC<{ products: Product[] }> = ({ products }) => {
   return (
-    <div className="">
+    <main className="">
       <Head>
         <title>Liberi Kids</title>
         <meta name="description" content="ropa de niños" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <BrandDescription />
-      <ProductsList />
-      {/* <main className={styles.main}>
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main> */}
-    </div>
+      <ProductsList products={products} />
+    </main>
   );
 };
+
+export async function getStaticProps() {
+  let results: object[] = [];
+  try {
+    const client = await MongoClient.connect(
+      "mongodb+srv://gasparcastello:laspelotas00@cluster0.5x9b6.mongodb.net/liberidb?retryWrites=true&w=majority"
+    );
+    const db = client.db();
+    const productCollection = db.collection("products");
+    results = await productCollection.find().toArray();
+    client.close();
+  } catch (err) {
+    alert(err);
+  }
+  return {
+    props: {
+      products: results.map((product) => ({
+        id: product._id.toString(),
+        name: product.name,
+        description: product.description,
+        url: product.url,
+        price: product.price,
+      })),
+    },
+  };
+}
 
 export default Home;

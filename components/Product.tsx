@@ -1,10 +1,9 @@
-import "bulma/css/bulma.min.css";
-import Image from "next/image";
+// import Image from "next/image";
 import styles from "./Product.module.css";
 
-function Product({ key, name, description, url, price }) {
+function Product({ id, name, description, url, price }) {
   return (
-    <div className={`${styles.card} card `} key={key}>
+    <div className={`${styles.card} card `} id={id}>
       <div className={`${styles.cardimage} card-image `}>
         <img
           className={styles.img}

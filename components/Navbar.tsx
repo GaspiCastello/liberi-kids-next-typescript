@@ -1,13 +1,26 @@
-import "bulma/css/bulma.min.css";
 import { FC, useState } from "react";
 import logo from "../assets/logo.png";
 import Image from "next/image";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
+import { useGlobal } from "../pages/my-context/globalStates";
 
 const Navbar: FC = () => {
+  const { scroll, setScroll } = useGlobal();
   const [isBurguerActive, setIsBurguerActive] = useState(false);
   const burguerMenuHandler = () => {
     setIsBurguerActive(!isBurguerActive);
+  };
+  const onScrollHandler = () => {
+    setScroll(true);
+    // console.log(scroll);
+    // setTimeout(() => {
+    //   setScroll((prevState) => {
+    //     !prevState;
+    //   });
+    // }, 100);
+    setTimeout(() => {
+      setScroll(false);
+    }, 100);
   };
   return (
     <div>
@@ -17,7 +30,7 @@ const Navbar: FC = () => {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-          <a href="./home" className="mt-2">
+          <a href="./" className="mt-2">
             <Image src={logo} width="60" height="60" alt="COMO PONGO UN LOGO" />
           </a>
 
@@ -39,30 +52,30 @@ const Navbar: FC = () => {
           className={`navbar-menu ${isBurguerActive && "is-active"}`}
         >
           <div className="navbar-start">
-            <a className="navbar-item">INICIO</a>
-            <a className="navbar-item">PRODUCTOS</a>
-            <a className="navbar-item"> CONTACTO</a>
+            <a onClick={onScrollHandler} className="navbar-item">
+              PRODUCTS
+            </a>
           </div>
 
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
                 <a
-                  className="button is-link is-rounded is-small"
+                  className=" "
                   target="_blank"
                   href="https://www.instagram.com/liberikids_/"
                   rel="noreferrer"
                 >
-                  <FaInstagram size="2em" />
+                  <FaInstagram className="mr-3" size="2em" color="white" />
                 </a>
 
                 <a
-                  className="button is-primary is-rounded is-small"
+                  className=""
                   target="_blank"
                   href="https://web.whatsapp.com/send?phone=+543426156014"
                   rel="noreferrer"
                 >
-                  <FaWhatsapp size="2em" />
+                  <FaWhatsapp className="" size="2em" color="#25D366" />
                 </a>
               </div>
             </div>
