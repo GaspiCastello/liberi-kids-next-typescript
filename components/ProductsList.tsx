@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { ProductInt } from "../pages/models/product";
-import { useGlobal } from "../pages/my-context/globalStates";
+import { useGlobal } from "../pages/store/globalStates";
 import Product from "./Product";
 
 // const ARRAY_PRODUCTS = [
@@ -49,11 +49,11 @@ import Product from "./Product";
 // ];
 
 const ProductsList: React.FC<{ products: ProductInt[] }> = ({ products }) => {
-  const { scroll } = useGlobal();
-  const productsSection = useRef();
-  console.log(scroll);
-  if (scroll) {
-    productsSection.current.scrollIntoView({ behavior: "smooth" });
+  const { isScroll } = useGlobal();
+  const productsSection = useRef<HTMLElement>(null);
+  console.log(isScroll);
+  if (isScroll) {
+    productsSection.current!.isScrollIntoView({ behavior: "smooth" });
   }
   return (
     <section ref={productsSection}>

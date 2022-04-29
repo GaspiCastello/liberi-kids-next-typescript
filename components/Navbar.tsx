@@ -2,25 +2,16 @@ import { FC, useState } from "react";
 import logo from "../assets/logo.png";
 import Image from "next/image";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
-import { useGlobal } from "../pages/my-context/globalStates";
+import { useGlobal } from "../pages/store/globalStates";
 
 const Navbar: FC = () => {
-  const { scroll, setScroll } = useGlobal();
+  const { isScroll, activateScroll } = useGlobal();
   const [isBurguerActive, setIsBurguerActive] = useState(false);
   const burguerMenuHandler = () => {
     setIsBurguerActive(!isBurguerActive);
   };
-  const onScrollHandler = () => {
-    setScroll(true);
-    // console.log(scroll);
-    // setTimeout(() => {
-    //   setScroll((prevState) => {
-    //     !prevState;
-    //   });
-    // }, 100);
-    setTimeout(() => {
-      setScroll(false);
-    }, 100);
+  const onisScrollHandler = () => {
+    activateScroll();
   };
   return (
     <div>
@@ -52,7 +43,7 @@ const Navbar: FC = () => {
           className={`navbar-menu ${isBurguerActive && "is-active"}`}
         >
           <div className="navbar-start">
-            <a onClick={onScrollHandler} className="navbar-item">
+            <a onClick={onisScrollHandler} className="navbar-item">
               PRODUCTS
             </a>
           </div>

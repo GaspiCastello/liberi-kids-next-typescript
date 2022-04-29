@@ -3,9 +3,9 @@ import Head from "next/head";
 import BrandDescription from "../components/BrandDescription";
 import ProductsList from "../components/ProductsList";
 import { MongoClient } from "mongodb";
-import { Product } from "./models/product";
+import { ProductInt, ProductIntDb } from "./models/product";
 
-const Home: React.FC<{ products: Product[] }> = ({ products }) => {
+const Home: React.FC<{ products: ProductInt[] }> = ({ products }) => {
   return (
     <main className="">
       <Head>
@@ -20,7 +20,7 @@ const Home: React.FC<{ products: Product[] }> = ({ products }) => {
 };
 
 export async function getStaticProps() {
-  let results: object[] = [];
+  let results: ProductIntDb[] = [];
   try {
     const client = await MongoClient.connect(
       "mongodb+srv://gasparcastello:laspelotas00@cluster0.5x9b6.mongodb.net/liberidb?retryWrites=true&w=majority"
