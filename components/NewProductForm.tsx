@@ -1,23 +1,24 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 
 import Card from "./ui/Card";
 import classes from "./NewProductForm.module.css";
+import { ProductDataInt } from "../pages/models/product";
 
-function NewProductForm({ onAdd }) {
-  const nameInputRef = useRef();
-  const descriptionInputRef = useRef();
-  const urlInputRef = useRef();
-  const priceInputRef = useRef();
+const NewProductForm: React.FC<{ onAdd: VoidFunction }> = ({ onAdd }) => {
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const descriptionInputRef = useRef<HTMLInputElement>();
+  const urlInputRef = useRef<HTMLInputElement>();
+  const priceInputRef = useRef<HTMLInputElement>();
 
   function submitHandler(event) {
     event.preventDefault();
 
-    const enteredName = nameInputRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
-    const enteredImage = urlInputRef.current.value;
-    const enteredPrice = priceInputRef.current.value;
+    const enteredName = nameInputRef.current!.value;
+    const enteredDescription = descriptionInputRef.current!.value;
+    const enteredImage = urlInputRef.current!.value;
+    const enteredPrice = priceInputRef.current!.value;
 
-    const productData = {
+    const productData: ProductDataInt = {
       name: enteredName,
       description: enteredDescription,
       url: enteredImage,
@@ -54,6 +55,6 @@ function NewProductForm({ onAdd }) {
       </form>
     </Card>
   );
-}
+};
 
 export default NewProductForm;
